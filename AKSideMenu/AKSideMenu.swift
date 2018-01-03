@@ -174,7 +174,7 @@ import UIKit
         self.animationDuration = 0.35
         self.interactivePopGestureRecognizerEnabled = true
 
-        self.menuViewControllerTransformation = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        self.menuViewControllerTransformation = CGAffineTransform(scaleX: 0.5, y: 0.5)
 
         self.scaleContentView = true
         self.backgroundTransformScale = 1.7
@@ -306,7 +306,6 @@ import UIKit
             } else {
                 self.contentViewContainer.transform = .identity
             }
-
             self.contentViewContainer.center = CGPoint(x: (UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) ? self.contentViewInLandscapeOffsetCenterX + self.view.frame.width : self.contentViewInPortraitOffsetCenterX + self.view.frame.width), y: self.contentViewContainer.center.y)
 
             if self.fadeMenuView {
@@ -618,12 +617,12 @@ import UIKit
             var contentViewScale: CGFloat = self.scaleContentView ? 1 - ((1 - self.contentViewScaleValue) * delta) : 1
 
             var backgroundViewScale: CGFloat = self.backgroundTransformScale - (0.7 * delta)
-            var menuViewScale: CGFloat = 1.5 - (0.5 * delta)
+            var menuViewScale: CGFloat = 0.5 + (0.5 * delta)
 
             if !self.bouncesHorizontally {
                 contentViewScale = max(contentViewScale, self.contentViewScaleValue)
                 backgroundViewScale = max(backgroundViewScale, 1.0)
-                menuViewScale = max(menuViewScale, 1.0)
+                menuViewScale = min(menuViewScale, 1.0)
             }
 
             if self.fadeMenuView {

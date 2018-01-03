@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import AKSideMenu
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, AKSideMenuDelegate {
 
@@ -33,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AKSideMenuDelegate {
         sideMenuViewController.contentViewShadowOpacity = 0.6
         sideMenuViewController.contentViewShadowRadius = 12
         sideMenuViewController.contentViewShadowEnabled = true
+        sideMenuViewController.scaleBackgroundImageView = false
+        sideMenuViewController.fadeMenuView = false
         self.window!.rootViewController = sideMenuViewController
 
         self.window!.backgroundColor = .white
